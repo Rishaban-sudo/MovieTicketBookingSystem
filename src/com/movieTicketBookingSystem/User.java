@@ -68,6 +68,7 @@ public class User {
     }
 
     public void myBookings() {
+        System.out.println("~~~~`Your bookings ! `~~~~");
         if(myBookings.size()==0){
             System.out.println("No bookings !");
         }

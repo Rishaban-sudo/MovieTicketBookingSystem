@@ -20,8 +20,12 @@ public class Show {
     }
 
     public boolean bookMyShow(int tickets) {
-        if(ticketsFilled+tickets >maxNoOfTickets) {
+        if(ticketsFilled==50) {
             System.out.println("Show house full !");
+            return false;
+        }
+        else if(ticketsFilled+tickets >maxNoOfTickets) {
+            System.out.println("Ticket count exceeding maximum capacity !");
             return false;
         }
         else {

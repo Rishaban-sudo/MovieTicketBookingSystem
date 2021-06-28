@@ -2,6 +2,7 @@ package com.movieTicketBookingSystem;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Theatre {
@@ -85,7 +86,7 @@ public class Theatre {
 
     public void configureScreens() {
 
-        System.out.print("Setting up initial configurations Please wait !");
+        /*System.out.print("Setting up initial configurations Please wait !");
         for (int c=5;c!=1;c--){
             try {
                 Thread.sleep(1000);
@@ -93,7 +94,7 @@ public class Theatre {
             } catch (InterruptedException ignored) {}
         }
 
-        System.out.println();
+        System.out.println();*/
 
         for(int i=0;i<noOfScreens;i++) {
             String name="";
@@ -116,6 +117,7 @@ public class Theatre {
 
 
     public Booking book() {
+        int screenNo=0;
 
         System.out.println("~~~~List of Shows~~~~");
         displayShows();
@@ -123,7 +125,13 @@ public class Theatre {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Select your Screen no: ");
-        int screenNo= sc.nextInt();
+
+
+        screenNo= sc.nextInt();
+        if(screenNo>noOfScreens){
+            throw new InvalidScreenNoException();
+        }
+
 
         Screen screen = screens.get(screenNo);
         System.out.println("1.9:00am show ");
@@ -172,18 +180,23 @@ public class Theatre {
             return;
         }
 
-        System.out.println("~~~~`Your bookings ! `~~~~");
         user.myBookings();
 
         System.out.println("Enter your booking id which you want to cancel :");
         String bookingId = sc.next();
 
         Booking booking = user.getBooking(bookingId);
-        booking.cancelBooking();
+        if(booking!=null){
+            booking.cancelBooking();
 
-        user.removeBooking(bookingId);
+            user.removeBooking(bookingId);
 
-        System.out.println("Booking cancelled Successfully ! ");
+            System.out.println("Booking cancelled Successfully ! ");
+        }
+        else{
+            System.out.println("Enter a valid booking id");
+        }
+
 
     }
 

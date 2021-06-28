@@ -58,7 +58,18 @@ public class Main {
 
                             switch (ch) {
                                 case 1:
-                                    Booking booking=inox.book();
+                                    Booking booking=null;
+
+                                    try{
+                                        booking=inox.book();
+                                    }
+                                    catch (InputMismatchException e){
+                                        System.out.println("Please enter a number !");
+                                    }
+                                    catch (InvalidScreenNoException e){
+                                        System.out.println(e);
+                                    }
+
                                     if(booking!=null){
                                         user.addBooking(booking);
                                     }
@@ -85,3 +96,4 @@ public class Main {
         }
     }
 }
+

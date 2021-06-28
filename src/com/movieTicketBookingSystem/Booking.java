@@ -41,6 +41,6 @@ public class Booking {
     public String toString() {
         return myShow.display()+
                 "No of tickets : "+noOfTickets+"\n"+
-                "Ticket Id : " + bookingId+"\n";
+                "Booking Id : " + bookingId+"\n";
     }
 }
