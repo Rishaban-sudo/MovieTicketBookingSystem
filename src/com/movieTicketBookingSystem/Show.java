@@ -31,12 +31,14 @@ public class Show {
         return true;
     }
 
+    public void cancelMyShow(int tickets) {
+        ticketsFilled-=tickets;
+    }
+
     public String display() {
         return "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+"\n"+
                 "Screen no= "+screen.getScreenNo()+"\n"+
                 "showTime= " + showTime + "\n" +
-                "maxNoOfTickets = " + maxNoOfTickets +"\n"+
-                "ticketsFilled = " + ticketsFilled +"\n"+
                 "currentMovie = " + currentMovie + "\n";
     }
 
@@ -44,7 +46,7 @@ public class Show {
     public String toString() {
         return  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+"\n"+
                 "showTime= " + showTime + "\n" +
-                "maxNoOfTickets = " + maxNoOfTickets +"\n"+
+                "Available Tickets = " + maxNoOfTickets +"\n"+
                 "ticketsFilled = " + ticketsFilled +"\n"+
                 "currentMovie = " + currentMovie + "\n";
     }

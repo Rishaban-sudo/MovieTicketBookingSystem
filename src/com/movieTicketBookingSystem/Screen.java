@@ -7,7 +7,7 @@ import java.util.List;
 public class Screen {
     private String name;
     private Integer screenNo;
-    private ArrayList<Show> shows;
+    private final ArrayList<Show> shows;
 
 
     public Screen(String name,int screenNo){

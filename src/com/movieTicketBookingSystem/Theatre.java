@@ -115,7 +115,9 @@ public class Theatre {
     }
 
 
-    public Show book() {
+    public Booking book() {
+
+        System.out.println("~~~~List of Shows~~~~");
         displayShows();
 
         Scanner sc = new Scanner(System.in);
@@ -129,7 +131,7 @@ public class Theatre {
         System.out.println("3.6:00pm show ");
         int ch = sc.nextInt();
         Show show=null;
-        int tickets;
+        int tickets=0;
 
         switch(ch){
             case 1:
@@ -157,7 +159,32 @@ public class Theatre {
                 }
                 break;
         }
-        return show;
+
+        return new Booking(show, tickets);
+    }
+
+    public void cancel(User user) {
+
+        Scanner sc = new Scanner(System.in);
+
+        if(user.getNoOfBookings()==0) {
+            System.out.println("No bookings to cancel !");
+            return;
+        }
+
+        System.out.println("~~~~`Your bookings ! `~~~~");
+        user.myBookings();
+
+        System.out.println("Enter your booking id which you want to cancel :");
+        String bookingId = sc.next();
+
+        Booking booking = user.getBooking(bookingId);
+        booking.cancelBooking();
+
+        user.removeBooking(bookingId);
+
+        System.out.println("Booking cancelled Successfully ! ");
+
     }
 
 }

@@ -42,7 +42,7 @@ public class Main {
                         while(flag!=1){
                             System.out.println("----------------------------------------");
                             System.out.println("1.Book tickets for movie !");
-                            System.out.println("2.Cancel tickets !");
+                            System.out.println("2.Cancel booking !");
                             System.out.println("3.View my show bookings");
                             System.out.println("4.Log out of your Account");
                             System.out.print("Enter your choice : ");
@@ -58,16 +58,16 @@ public class Main {
 
                             switch (ch) {
                                 case 1:
-                                    Show show=inox.book();
-                                    if(show!=null){
-                                        user.addShow(show);
+                                    Booking booking=inox.book();
+                                    if(booking!=null){
+                                        user.addBooking(booking);
                                     }
                                     break;
                                 case 2:
-                                    /* */
+                                    inox.cancel(user);
                                     break;
                                 case 3:
-                                    user.myShows();
+                                    user.myBookings();
                                     break;
                                 default:
                                     flag++;

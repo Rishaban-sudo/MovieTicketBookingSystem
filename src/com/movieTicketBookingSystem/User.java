@@ -1,6 +1,8 @@
 package com.movieTicketBookingSystem;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class User {
@@ -9,7 +11,7 @@ public class User {
     private String phoneNumber;
     private String emailId;
     private String password;
-    private ArrayList<Show> myShows;
+    private HashMap<String,Booking> myBookings;
 
 
     public User(String name,String phoneNumber,String emailId,String password) {
@@ -17,7 +19,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.emailId = emailId;
         this.password = password;
-        this.myShows = new ArrayList<>();
+        this.myBookings = new HashMap<>();
     }
 
 
@@ -49,16 +51,31 @@ public class User {
         return password;
     }
 
-    public void addShow(Show show) {
-        myShows.add(show);
+    public int getNoOfBookings() {
+        return myBookings.size();
     }
 
-    public void myShows() {
-        if(myShows.size()==0){
+    public Booking getBooking(String bookingId){
+        return myBookings.get(bookingId);
+    }
+
+    public void addBooking(Booking booking) {
+        myBookings.put(booking.getBookingId(), booking);
+    }
+
+    public void removeBooking(String bookingId) {
+        myBookings.remove(bookingId);
+    }
+
+    public void myBookings() {
+        if(myBookings.size()==0){
             System.out.println("No bookings !");
         }
-        for(Show show:myShows){
-            System.out.println(show.display());
+        else {
+            Collection<Booking> bookings = myBookings.values();
+            for(Booking booking:bookings) {
+                System.out.println(booking);
+            }
         }
     }
 
