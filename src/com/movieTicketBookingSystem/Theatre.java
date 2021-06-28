@@ -2,7 +2,6 @@ package com.movieTicketBookingSystem;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Theatre {
